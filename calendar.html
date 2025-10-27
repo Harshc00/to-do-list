@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Calendar — DailyFlow</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dark">
+  <header class="header">
+    <div class="brand"><a href="index.html">DailyFlow</a></div>
+    <nav>
+      <a href="index.html">Home</a> <a href="tasks.html">Tasks</a> <a href="calendar.html">Calendar</a> <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card calendar-wrapper">
+      <div class="calendar" id="calendar-root">
+        <div class="month">
+          <button id="cal-prev" class="btn alt">&lt;</button>
+          <div id="cal-month" class="muted"></div>
+          <button id="cal-next" class="btn alt">&gt;</button>
+        </div>
+
+        <div class="days" id="cal-days"></div>
+      </div>
+
+      <aside class="sidebar card">
+        <h3>Add / Edit Event</h3>
+        <div class="event-form">
+          <label>Date</label>
+          <input id="event-date" type="date" />
+          <label>Title</label>
+          <input id="event-title" type="text" />
+          <label>Note</label>
+          <textarea id="event-note" rows="3"></textarea>
+          <button id="add-event" class="btn">Add Event</button>
+        </div>
+
+        <div id="day-events" style="margin-top:12px"></div>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="card footer">© 2025 DailyFlow</footer>
+  <script src="script.js"></script>
+</body>
+</html>
