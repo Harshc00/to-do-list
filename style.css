@@ -1,0 +1,62 @@
+/* DailyFlow — Dark theme with animations and calendar styles */
+:root{
+  --bg:#0b1020; --card:#0f1724; --muted:#94a3b8; --accent:#7c3aed; --accent-2:#06b6d4;
+  --glass: rgba(255,255,255,0.03); --success:#16a34a;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:Inter, system-ui, -apple-system,'Segoe UI',Roboto;background:var(--bg);color:#e6eef8}
+a { color:inherit; text-decoration:none; }
+.header{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent);position:sticky;top:0;z-index:30;border-bottom:1px solid rgba(255,255,255,0.03)}
+.header .brand a{font-weight:700;color:var(--accent);font-size:18px}
+.header nav{display:flex;gap:10px;align-items:center}
+.header nav a{color:var(--muted);text-decoration:none;padding:8px;border-radius:8px}
+.header nav a:hover{background:var(--glass);color:white}
+.header nav a.active{background:rgba(124,58,237,0.12);color:#fff}
+
+/* container */
+.container{max-width:1100px;margin:22px auto;padding:0 18px}
+
+/* page card */
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border:1px solid rgba(255,255,255,0.03);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6);animation:fadeUp .45s ease both;margin:18px 0}
+.card h2{margin:0 0 10px 0;color:var(--accent)}
+
+/* forms & controls */
+.controls{display:flex;gap:8px;align-items:center;margin:10px 0;flex-wrap:wrap}
+.controls input[type="text"], .controls input[type="number"], .controls input[type="date"], textarea{padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+.controls .small{width:78px}
+.btn{padding:8px 12px;border-radius:8px;border:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;cursor:pointer}
+.btn:hover{transform:translateY(-2px);transition:transform .15s ease}
+
+/* lists */
+.list{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.item{display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:8px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid rgba(255,255,255,0.02)}
+.muted{color:var(--muted)}
+
+/* calendar */
+.calendar-wrapper{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
+.calendar{width:680px;background:var(--card);border-radius:10px;padding:12px}
+.calendar .month{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.calendar .days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.calendar .day{min-height:90px;padding:8px;border-radius:8px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid rgba(255,255,255,0.02);position:relative;overflow:hidden;cursor:pointer}
+.calendar .day .date{font-weight:600;color:var(--muted);margin-bottom:6px}
+.event{background:var(--accent);padding:6px;border-radius:6px;color:white;font-size:13px;margin-top:6px}
+
+/* sidebar */
+.sidebar{width:320px}
+.event-form{display:flex;flex-direction:column;gap:8px}
+.event-form input, .event-form textarea{width:100%}
+
+/* profile */
+.profile{display:flex;align-items:center;gap:12px}
+.profile img{width:96px;border-radius:999px;border:3px solid var(--accent)}
+
+/* chart (analytics) */
+.chart{display:flex;gap:8px;align-items:flex-end;height:160px;padding:8px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border-radius:8px}
+.chart div{width:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:6px;transition:height .5s}
+
+/* responsive */
+@media(max-width:900px){.calendar{width:100%}.sidebar{width:100%}.header nav{display:none}}
+
+/* animations */
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
