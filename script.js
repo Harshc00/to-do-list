@@ -160,4 +160,57 @@ document.addEventListener('DOMContentLoaded', ()=> {
         const cell = document.createElement('div'); cell.className='day';
         const iso = formatDate(dt);
         cell.innerHTML = `<div class="date">${d}</div><div class="events"></div>`;
-        con
+        const events = getEvents()[iso] || [];
+        const eventsEl = cell.querySelector('.events');
+        events.forEach(ev => {
+          const e = document.createElement('div'); e.className='event'; e.textContent = ev.title;
+          eventsEl.appendChild(e);
+        });
+        cell.addEventListener('click', ()=> {
+          selectedDateInput.value = iso;
+          renderDayEvents(iso);
+        });
+        daysContainer.appendChild(cell);
+      }
+    }
+
+    function renderDayEvents(iso) {
+      const evs = getEvents()[iso] || [];
+      dayEventsList.innerHTML = `<h4>Events for ${iso}</h4>`;
+      if(evs.length === 0) dayEventsList.innerHTML += '<div class="muted">No events</div>';
+      evs.forEach(ev => {
+        const d = document.createElement('div'); d.className='item';
+        d.innerHTML = `<div><strong>${escapeHtml(ev.title)}</strong><div class="muted">${escapeHtml(ev.note||'')}</div></div><div><button class="btn del-ev">Delete</button></div>`;
+        d.querySelector('.del-ev').addEventListener('click', ()=> {
+          const all = getEvents();
+          all[iso] = all[iso].filter(x => x.id !== ev.id);
+          if(all[iso].length === 0) delete all[iso];
+          saveEvents(all);
+          renderMonth(); renderDayEvents(iso);
+        });
+        dayEventsList.appendChild(d);
+      });
+    }
+
+    addEventBtn.addEventListener('click', ()=> {
+      const date = selectedDateInput.value; const title = eventTitleInput.value.trim(); const note = eventNoteInput.value.trim();
+      if(!date || !title) { alert('Select date and enter title'); return; }
+      const all = getEvents();
+      if(!all[date]) all[date] = [];
+      all[date].unshift({id: Date.now(), title, note});
+      saveEvents(all);
+      eventTitleInput.value = ''; eventNoteInput.value = '';
+      renderMonth(); renderDayEvents(date);
+    });
+
+    prevBtn.addEventListener('click', ()=> { current.setMonth(current.getMonth()-1); renderMonth(); });
+    nextBtn.addEventListener('click', ()=> { current.setMonth(current.getMonth()+1); renderMonth(); });
+
+    renderMonth();
+    selectedDateInput.value = formatDate(new Date());
+    renderDayEvents(selectedDateInput.value);
+  }
+
+  // Helpers
+  function escapeHtml(s) { return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
+});
