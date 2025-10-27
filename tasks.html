@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tasks — DailyFlow</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dark">
+  <header class="header">
+    <div class="brand"><a href="index.html">DailyFlow</a></div>
+    <nav>
+      <a href="index.html">Home</a> <a href="dashboard.html">Dashboard</a> <a href="tasks.html">Tasks</a> <a href="calendar.html">Calendar</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Tasks</h2>
+      <div class="controls">
+        <input id="task-title" type="text" placeholder="Task name (e.g., Study chapter 3)" />
+        <input id="task-duration" type="number" min="5" value="30" class="small" />
+        <button id="add-task" class="btn">Add</button>
+      </div>
+
+      <div class="controls">
+        <input id="task-filter" placeholder="Search tasks..." class="full" />
+      </div>
+
+      <div id="task-list" class="list"></div>
+      <p class="muted">Tasks persist locally in your browser (localStorage).</p>
+    </section>
+  </main>
+
+  <footer class="card footer">© 2025 DailyFlow</footer>
+  <script src="script.js"></script>
+</body>
+</html>
