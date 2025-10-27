@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard — DailyFlow</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dark">
+  <header class="header">
+    <div class="brand"><a href="index.html">DailyFlow</a></div>
+    <nav>
+      <a href="index.html">Home</a> <a href="tasks.html">Tasks</a> <a href="calendar.html">Calendar</a> <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Focus Timer</h2>
+      <div class="controls">
+        <label>Minutes</label>
+        <input id="timer-min" type="number" min="1" value="25" class="small" />
+        <button id="start-timer" class="btn">Start</button>
+        <button id="stop-timer" class="btn alt">Stop</button>
+      </div>
+      <div id="timer-display" class="timer-display">00:00</div>
+
+      <p class="muted" style="margin-top:12px">Start the timer to focus on a selected task. Timer runs in your browser.</p>
+    </section>
+
+    <section class="card">
+      <h2>Quick Tasks</h2>
+      <div id="dash-tasks" class="list"></div>
+    </section>
+  </main>
+
+  <footer class="card footer">© 2025 DailyFlow</footer>
+  <script src="script.js"></script>
+</body>
+</html>
