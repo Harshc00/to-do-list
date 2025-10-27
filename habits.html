@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Habits — DailyFlow</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dark">
+  <header class="header">
+    <div class="brand"><a href="index.html">DailyFlow</a></div>
+    <nav><a href="index.html">Home</a> <a href="tasks.html">Tasks</a> <a href="habits.html">Habits</a></nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Habits</h2>
+      <div class="controls">
+        <input id="habit-title" placeholder="Habit (e.g., Morning walk)" />
+        <button id="add-habit" class="btn">Add Habit</button>
+      </div>
+      <div id="habit-list" class="list"></div>
+      <p class="muted">Simple habit tracker (local only).</p>
+    </section>
+  </main>
+
+  <footer class="card footer">© 2025 DailyFlow</footer>
+  <script src="script.js"></script>
+</body>
+</html>
